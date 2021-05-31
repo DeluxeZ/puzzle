@@ -13,7 +13,7 @@
       <br/>
       <span>步数：{{ step }}</span><br/>
       <span>预览：</span><br/>
-      <img ref="img" class="img" src="../../public/image/test.png" alt="error">
+      <img ref="img" class="img" src="../../public/image/MonaLisa.png" alt="error">
     </div>
   </div>
 </template>
@@ -61,7 +61,6 @@ export default {
           return;
         }
       }
-      this.drawHandler()
       if (confirm('游戏结束，您的分数为：' + this.step + ', 是否开始一句新游戏')) {
         this.newGame()
       }
@@ -92,20 +91,19 @@ export default {
       };
       this.pic[this.sign] = {...this.pic[this.sign], ...temp};
       this.step = this.step + 1;
-      this.isWinHandler();
       this.drawHandler();
     },
     // 绘制拼图
     drawHandler() {
       let canvas = this.$refs.can;
       let ctx = canvas.getContext('2d');
-      canvas.width = 400;
-      canvas.height = 400;
-      ctx.clearRect(30, 30, 400, 400);
+      canvas.width = 640;
+      canvas.height = 640;
+      ctx.clearRect(30, 30, 640, 640);
       let width = canvas.width / this.column
       let height = canvas.width / this.row
       let img = new Image()
-      img.src = require('../../public/image/test.png');
+      img.src = require('../../public/image/MonaLisa.png');
       img.onload = () => {
         for (let i = 0; i < this.row * this.column; i++) {
           // 绘制到canvas的各元素的起始坐标
@@ -182,7 +180,7 @@ export default {
   background-origin: border-box;
   padding: 5px;
   position: absolute;
-  left: 660px;
+  left: 760px;
   top: 30px;
   width: 200px;
 }
@@ -210,8 +208,8 @@ export default {
 
 #puzzleArea {
   float: left;
-  width: 600px;
-  height: 600px;
+  width: 700px;
+  height: 700px;
   position: absolute;
   top: 30px;
   border: 1px solid black;
